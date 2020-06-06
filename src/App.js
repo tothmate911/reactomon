@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
+import styled, { ThemeProvider, css } from 'styled-components';
 
 import './App.css';
 
@@ -8,6 +9,18 @@ import Navbar from './components/Navbar';
 import PokemonList from './components/PokemonList';
 import TypeList from './components/TypeList';
 import PokemonDetail from './components/PokemonDetail';
+
+import Button from './elements/Button';
+
+const theme = {
+  primary: 'teal',
+  secondary: 'green',
+  alert: 'yellow',
+  font: 'sans-serif',
+};
+const H1 = styled.h1`
+  font-family: ${(props) => props.theme.font};
+`;
 
 const App = (props) => {
   const [pokemonsDetailed, setPokemonsDetailed] = useState([]);
@@ -34,6 +47,16 @@ const App = (props) => {
   return (
     <Router>
       <div className="App">
+        <H1>Styled components</H1>
+
+        <ThemeProvider theme={theme}>
+          <form action="">
+            <input type="text" />
+            <button>Create</button>
+            <Button color="secondary">Create</Button>
+          </form>
+        </ThemeProvider>
+
         <div className="container">
           <Navbar />
           <Route
