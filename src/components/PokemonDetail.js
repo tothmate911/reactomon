@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Card from '../elements/Card';
+
 const PokemonDetail = (props) => {
   const { id } = props.match.params;
   const pokemon = props.getPokemon(parseInt(id));
@@ -39,7 +41,13 @@ const PokemonDetail = (props) => {
       </>
     );
   }
-  return <div className="detailed-view-container">{content}</div>;
+  return <Card style={detailedViewStyle}>{content}</Card>;
+};
+
+const detailedViewStyle = {
+  margin: '0 auto',
+  width: '200px',
+  marginTop: '30px',
 };
 
 export default PokemonDetail;

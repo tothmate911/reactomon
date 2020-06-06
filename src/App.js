@@ -12,12 +12,18 @@ import PokemonDetail from './components/PokemonDetail';
 
 import Button from './elements/Button';
 
+import MovieList from './components/MovieList';
+import Nav from './components/Nav';
+import { MovieProvider } from './MovieContext';
+import AddMovie from './components/AddMovie';
+
 const theme = {
   primary: 'teal',
   secondary: 'green',
   alert: 'yellow',
   font: 'sans-serif',
 };
+
 const H1 = styled.h1`
   font-family: ${(props) => props.theme.font};
 `;
@@ -47,15 +53,20 @@ const App = (props) => {
   return (
     <Router>
       <div className="App">
-        <H1>Styled components</H1>
+        <MovieProvider>
+          <Nav />
+          <AddMovie />
+          <MovieList />
+        </MovieProvider>
 
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}>
+          <H1>Styled components</H1>
           <form action="">
             <input type="text" />
             <button>Create</button>
             <Button color="secondary">Create</Button>
           </form>
-        </ThemeProvider>
+        </ThemeProvider> */}
 
         <div className="container">
           <Navbar />
